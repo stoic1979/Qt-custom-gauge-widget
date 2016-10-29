@@ -7,8 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-   SetupCompass();
-
+    SetupCompass();
+    SetupAirspeedGauge();
 }
 
 void MainWindow::SetupCompass() {
@@ -60,6 +60,24 @@ void MainWindow::SetupCompass() {
     ui->verticalLayout->addWidget(compassGauge);
 }
 
+void MainWindow::SetupAirspeedGauge() {
+    airspeedGauge = new QcGaugeWidget;
+    airspeedGauge->addArc(55);
+    airspeedGauge->addDegrees(65)->setValueRange(0,100);
+    QcColorBand *clrBand = airspeedGauge->addColorBand(50);
+    clrBand->setValueRange(0,100);
+    airspeedGauge->addValues(80)->setValueRange(0,100);
+    airspeedGauge->addLabel(70)->setText("Km/h");
+    QcLabelItem *lab = airspeedGauge->addLabel(40);
+    lab->setText("0");
+    airspeedNeedle = airspeedGauge->addNeedle(60);
+    airspeedNeedle->setLabel(lab);
+    airspeedNeedle->setColor(Qt::blue);
+    airspeedNeedle->setValueRange(0,100);
+    airspeedGauge->addBackground(7);
+    ui->horizontalLayout->addWidget(airspeedGauge);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -68,4 +86,5 @@ MainWindow::~MainWindow()
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
     compassNeedle->setCurrentValue(value);
+    airspeedNeedle->setCurrentValue(value);
 }

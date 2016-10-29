@@ -21,12 +21,18 @@ private slots:
 
 private:
     void SetupCompass();
+    void SetupAirspeedGauge();
 
 private:
     Ui::MainWindow *ui;
 
+    // compass components
     QcGaugeWidget    *compassGauge;
     QcNeedleItem     *compassNeedle;
+
+    // air speed components
+    QcGaugeWidget *airspeedGauge;
+    QcNeedleItem *airspeedNeedle;
 };
 
 #endif // MAINWINDOW_H
