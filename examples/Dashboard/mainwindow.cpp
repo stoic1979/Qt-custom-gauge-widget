@@ -7,6 +7,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+   SetupCompass();
+
+}
+
+void MainWindow::SetupCompass() {
     compassGauge = new QcGaugeWidget;
 
     compassGauge->addBackground(99);
