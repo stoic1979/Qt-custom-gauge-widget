@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp\
+        ../../source/qcgaugewidget.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h\
+            ../../source/qcgaugewidget.h
 
 FORMS    += mainwindow.ui
